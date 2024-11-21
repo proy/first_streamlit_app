@@ -1,0 +1,36 @@
+{
+	"name": "first_streamlit_app",
+	"image": "mcr.microsoft.com/devcontainers/python:1-3.12",
+
+	"customizations": {
+		"vscode": {
+			"settings": {},
+			"extensions": [
+				"streetsidesoftware.code-spell-checker",
+				"ms-python.python",
+				"ms-toolsai.jupyter",
+				"donjayamanne.python-extension-pack"
+			]
+		}
+	},
+	
+	// Exposing Streamlit's default port
+	"forwardPorts": [8501],
+
+	// Defining post-create commands to install dependencies from requirements.txt
+	"postCreateCommand": "pip3 install -r requirements.txt",
+
+	"postStartCommand": "streamlit run ./streamlit_app.py",
+
+	// Configure ports attributes for Streamlit or any other service you're running inside the container
+	"portsAttributes": {
+		"8501": {
+			"label": "Streamlit App",
+			"onAutoForward": "notify"
+		}
+	},
+
+	// Optionally use a remote user instead of root for better security.
+	// "remoteUser": "vscode",
+	
+}
